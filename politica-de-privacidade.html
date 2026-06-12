@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Política de Privacidade — Alcetus Flow</title>
+<meta name="description" content="Saiba como o Alcetus Flow coleta, utiliza e armazena seus dados. Transparência e segurança no tratamento das suas informações.">
+<meta name="robots" content="index, follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ========== RESET & BASE ========== */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:#07070a;color:#e2e8f0;line-height:1.6;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+button{border:none;cursor:pointer;font-family:inherit}
+
+/* ========== CSS VARIABLES ========== */
+:root{
+  --max-w:1280px;
+  --prose-w:720px;
+  --c-bg:#07070a;
+  --c-surface:#0f1117;
+  --c-surface-2:#161922;
+  --c-border:rgba(255,255,255,.06);
+  --c-border-hover:rgba(255,255,255,.12);
+  --c-text:#e2e8f0;
+  --c-text-muted:#94a3b8;
+  --c-text-dim:#64748b;
+  --c-white:#ffffff;
+  --c-green:#22c55e;
+  --c-blue:#3b82f6;
+  --c-purple:#8b5cf6;
+  --grad-blue-purple:linear-gradient(135deg,#3b82f6,#8b5cf6);
+  --shadow-sm:0 1px 2px rgba(0,0,0,.3);
+  --shadow-md:0 4px 12px rgba(0,0,0,.4);
+  --radius-sm:8px;
+  --radius-md:12px;
+  --radius-lg:16px;
+  --radius-full:9999px;
+  --ease-out:cubic-bezier(.16,1,.3,1);
+  --duration-fast:.2s;
+  --duration-normal:.4s;
+}
+
+/* ========== LAYOUT ========== */
+.container{width:100%;max-width:var(--max-w);margin:0 auto;padding:0 24px}
+.prose{max-width:var(--prose-w);margin:0 auto}
+@media(max-width:768px){.container{padding:0 16px}}
+
+/* ========== NAVBAR ========== */
+.navbar{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 0;background:rgba(7,7,10,.8);border-bottom:1px solid rgba(255,255,255,.06);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.navbar__inner{display:flex;align-items:center;justify-content:space-between}
+.navbar__logo{display:flex;align-items:center;gap:10px;font-size:1.0625rem;font-weight:700;color:var(--c-white)}
+.navbar__back{display:inline-flex;align-items:center;gap:6px;font-size:.875rem;color:var(--c-text-dim);transition:color var(--duration-fast)}
+.navbar__back:hover{color:var(--c-white)}
+.navbar__back svg{transition:transform var(--duration-fast)}
+.navbar__back:hover svg{transform:translateX(-3px)}
+
+/* ========== HERO ========== */
+.page-hero{padding:140px 0 64px;text-align:center;border-bottom:1px solid var(--c-border)}
+.page-hero__badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:var(--radius-full);border:1px solid rgba(59,130,246,.3);background:rgba(59,130,246,.08);font-size:.8125rem;font-weight:500;color:var(--c-blue);margin-bottom:24px}
+.page-hero h1{font-size:clamp(1.75rem,4vw,2.75rem);font-weight:800;letter-spacing:-.02em;color:var(--c-white);margin-bottom:16px}
+.page-hero p{font-size:1.0625rem;color:var(--c-text-muted);max-width:520px;margin:0 auto}
+.page-hero__meta{margin-top:20px;font-size:.8125rem;color:var(--c-text-dim)}
+
+/* ========== CONTENT ========== */
+.content{padding:64px 0 96px}
+
+/* Table of contents */
+.toc{background:var(--c-surface);border:1px solid var(--c-border);border-radius:var(--radius-lg);padding:24px 28px;margin-bottom:48px}
+.toc__title{font-size:.875rem;font-weight:700;color:var(--c-white);margin-bottom:12px;text-transform:uppercase;letter-spacing:.06em}
+.toc__list{display:flex;flex-direction:column;gap:8px}
+.toc__list a{font-size:.875rem;color:var(--c-text-dim);display:flex;align-items:center;gap:8px;transition:color var(--duration-fast)}
+.toc__list a:hover{color:var(--c-blue)}
+.toc__list a::before{content:'';display:inline-block;width:4px;height:4px;border-radius:50%;background:var(--c-text-dim);flex-shrink:0;transition:background var(--duration-fast)}
+.toc__list a:hover::before{background:var(--c-blue)}
+
+/* Sections */
+.policy-section{margin-bottom:48px;scroll-margin-top:100px}
+.policy-section:last-child{margin-bottom:0}
+
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:.75rem;font-weight:700;color:var(--c-blue);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px}
+.section-label__num{width:20px;height:20px;border-radius:4px;background:rgba(59,130,246,.15);display:flex;align-items:center;justify-content:center;font-size:.6875rem}
+
+h2{font-size:1.375rem;font-weight:700;color:var(--c-white);margin-bottom:16px;line-height:1.3}
+h3{font-size:1.0625rem;font-weight:600;color:var(--c-white);margin-bottom:10px;margin-top:24px}
+p{font-size:.9375rem;color:var(--c-text-muted);line-height:1.75;margin-bottom:12px}
+p:last-child{margin-bottom:0}
+
+/* Cards de dados */
+.data-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0}
+@media(max-width:600px){.data-grid{grid-template-columns:1fr}}
+
+.data-card{background:var(--c-surface);border:1px solid var(--c-border);border-radius:var(--radius-md);padding:16px 20px}
+.data-card__icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:10px;font-size:1rem}
+.data-card__icon--blue{background:rgba(59,130,246,.12)}
+.data-card__icon--purple{background:rgba(139,92,246,.12)}
+.data-card__icon--green{background:rgba(34,197,94,.12)}
+.data-card__icon--orange{background:rgba(249,115,22,.12)}
+.data-card h3{font-size:.875rem;font-weight:600;color:var(--c-white);margin-bottom:6px;margin-top:0}
+.data-card p{font-size:.8125rem;color:var(--c-text-dim);line-height:1.6;margin:0}
+
+/* Lista de itens */
+.item-list{list-style:none;margin:12px 0;display:flex;flex-direction:column;gap:8px}
+.item-list li{display:flex;align-items:flex-start;gap:10px;font-size:.9375rem;color:var(--c-text-muted);line-height:1.6}
+.item-list li::before{content:'';display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--c-blue);flex-shrink:0;margin-top:.55em}
+
+/* Highlight box */
+.highlight-box{background:rgba(59,130,246,.06);border:1px solid rgba(59,130,246,.18);border-radius:var(--radius-md);padding:20px 24px;margin:20px 0}
+.highlight-box--green{background:rgba(34,197,94,.06);border-color:rgba(34,197,94,.18)}
+.highlight-box--orange{background:rgba(249,115,22,.06);border-color:rgba(249,115,22,.18)}
+.highlight-box p{font-size:.875rem;color:var(--c-text-muted);margin:0}
+.highlight-box strong{color:var(--c-white)}
+
+/* Divisor */
+.divider{height:1px;background:var(--c-border);margin:40px 0}
+
+/* Contato card */
+.contact-card{background:var(--c-surface);border:1px solid var(--c-border);border-radius:var(--radius-lg);padding:28px;margin-top:20px;display:flex;flex-direction:column;gap:12px}
+.contact-card__row{display:flex;align-items:center;gap:12px;font-size:.9375rem}
+.contact-card__label{font-weight:600;color:var(--c-white);min-width:80px}
+.contact-card__value{color:var(--c-text-muted)}
+.contact-card__value a{color:var(--c-blue);transition:color var(--duration-fast)}
+.contact-card__value a:hover{color:var(--c-white)}
+
+/* ========== FOOTER ========== */
+.footer{background:var(--c-surface);border-top:1px solid var(--c-border);padding:40px 0 28px}
+.footer__inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.footer__logo{display:flex;align-items:center;gap:10px;font-size:1rem;font-weight:700;color:var(--c-white)}
+.footer__links{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.footer__links a{font-size:.8125rem;color:var(--c-text-dim);transition:color var(--duration-fast)}
+.footer__links a:hover{color:var(--c-white)}
+.footer__copy{width:100%;text-align:center;font-size:.8125rem;color:var(--c-text-dim);padding-top:20px;border-top:1px solid var(--c-border);margin-top:20px}
+
+@media(max-width:600px){
+  .footer__inner{justify-content:center;text-align:center}
+  .footer__links{justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<!-- ========== NAVBAR ========== -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <div class="navbar__inner">
+      <a href="./index.html" class="navbar__logo">
+        <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+          <rect width="32" height="32" rx="8" fill="url(#logo-grad-nav)"/>
+          <path d="M10 22V10l6 4.5L22 10v12l-6-4.5L10 22z" fill="#fff" fill-opacity=".9"/>
+          <defs><linearGradient id="logo-grad-nav" x1="0" y1="0" x2="32" y2="32"><stop stop-color="#3b82f6"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs>
+        </svg>
+        Alcetus Flow
+      </a>
+      <a href="./index.html" class="navbar__back">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Voltar ao site
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ========== HERO ========== -->
+<div class="page-hero">
+  <div class="container">
+    <div class="page-hero__badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Privacidade &amp; Dados
+    </div>
+    <h1>Política de Privacidade</h1>
+    <p>Transparência total sobre como coletamos, utilizamos e protegemos as suas informações dentro da plataforma Alcetus Flow.</p>
+    <p class="page-hero__meta">Última atualização: Junho de 2026 &nbsp;·&nbsp; Versão 1.0</p>
+  </div>
+</div>
+
+<!-- ========== CONTEÚDO ========== -->
+<div class="content">
+  <div class="container">
+    <div class="prose">
+
+      <!-- Índice -->
+      <div class="toc">
+        <div class="toc__title">Índice</div>
+        <div class="toc__list">
+          <a href="#s1">1. Quem somos</a>
+          <a href="#s2">2. Quais dados coletamos</a>
+          <a href="#s3">3. Para que usamos os dados</a>
+          <a href="#s4">4. Como armazenamos e protegemos</a>
+          <a href="#s5">5. Compartilhamento com terceiros</a>
+          <a href="#s6">6. Cookies e rastreamento</a>
+          <a href="#s7">7. Seus direitos (LGPD)</a>
+          <a href="#s8">8. Retenção de dados</a>
+          <a href="#s9">9. Alterações nesta política</a>
+          <a href="#s10">10. Contato e encarregado de dados</a>
+        </div>
+      </div>
+
+      <!-- Aviso LGPD -->
+      <div class="highlight-box">
+        <p>Esta Política de Privacidade está em conformidade com a <strong>Lei Geral de Proteção de Dados Pessoais (LGPD — Lei nº 13.709/2018)</strong>. Ao utilizar o Alcetus Flow, você concorda com as práticas descritas neste documento.</p>
+      </div>
+
+      <!-- 1. Quem somos -->
+      <div class="policy-section" id="s1">
+        <div class="section-label">
+          <span class="section-label__num">1</span>
+          Quem somos
+        </div>
+        <h2>Controlador dos Dados</h2>
+        <p>O <strong>Alcetus Flow</strong> é uma plataforma SaaS de prospecção B2B que integra Extrator de Leads, CRM de Vendas e Disparador de WhatsApp em um único painel. Operado pela <strong>Alcetus</strong>, atuamos como controladores dos dados pessoais tratados dentro da plataforma.</p>
+        <p>Nossos usuários são pessoas físicas ou jurídicas (agências, times de vendas, profissionais autônomos) que utilizam a plataforma para suas atividades de prospecção comercial.</p>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- 2. Dados coletados -->
+      <div class="policy-section" id="s2">
+        <div class="section-label">
+          <span class="section-label__num">2</span>
+          Quais dados coletamos
+        </div>
+        <h2>Categorias de Dados Coletados</h2>
+        <p>Coletamos apenas os dados necessários para a prestação do serviço. Abaixo, detalhamos cada categoria:</p>
+
+        <div class="data-grid">
+          <div class="data-card">
+            <div class="data-card__icon data-card__icon--blue">👤</div>
+            <h3>Dados de Cadastro</h3>
+            <p>E-mail, nome de usuário e senha (armazenada com hash bcrypt). Coletados no momento da criação da conta.</p>
+          </div>
+          <div class="data-card">
+            <div class="data-card__icon data-card__icon--green">📍</div>
+            <h3>Dados de Leads (Google Maps)</h3>
+            <p>Nome da empresa, telefone, endereço, avaliação, categoria e site. São dados públicos extraídos do Google Maps a pedido do usuário.</p>
+          </div>
+          <div class="data-card">
+            <div class="data-card__icon data-card__icon--purple">💬</div>
+            <h3>Dados de Sessão WhatsApp</h3>
+            <p>Token de sessão gerado via QR Code. Não armazenamos mensagens trocadas — apenas o estado da conexão.</p>
+          </div>
+          <div class="data-card">
+            <div class="data-card__icon data-card__icon--orange">📊</div>
+            <h3>Dados de Atividade no CRM</h3>
+            <p>Notas, etapas do funil, histórico de movimentações e tags atribuídas pelo próprio usuário aos leads.</p>
+          </div>
+        </div>
+
+        <h3>Dados técnicos coletados automaticamente</h3>
+        <ul class="item-list">
+          <li>Endereço IP e dados de geolocalização aproximada</li>
+          <li>Tipo de navegador e sistema operacional</li>
+          <li>Logs de acesso e erros para diagnóstico de falhas</li>
+          <li>Horários de login e atividade dentro da plataforma</li>
+        </ul>
+
+        <div class="highlight-box">
+          <p><strong>Não coletamos</strong> dados sensíveis como: número de documentos (CPF/CNPJ), dados bancários, informações de saúde ou qualquer dado de categoria especial conforme o Art. 11 da LGPD.</p>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- 3. Para que usamos -->
+      <div class="policy-section" id="s3">
+        <div class="section-label">
+          <span class="section-label__num">3</span>
+          Finalidade do uso
+        </div>
+        <h2>Para Que Usamos os Dados</h2>
+        <p>Cada dado coletado tem uma finalidade específica e legítima. Utilizamos suas informações para:</p>
+
+        <h3>Prestação do serviço</h3>
+        <ul class="item-list">
+          <li>Criar e manter sua conta de usuário com isolamento seguro de dados</li>
+          <li>Executar buscas de leads no Google Maps conforme os parâmetros que você define</li>
+          <li>Gerenciar seu pipeline de vendas no CRM integrado</li>
+          <li>Enviar e receber mensagens via WhatsApp por meio da sua sessão conectada</li>
+          <li>Executar automações de follow-up que você configura na plataforma</li>
+        </ul>
+
+        <h3>Segurança e melhoria contínua</h3>
+        <ul class="item-list">
+          <li>Detectar e prevenir acessos não autorizados e fraudes</li>
+          <li>Identificar erros e falhas técnicas para correção</li>
+          <li>Monitorar o desempenho e a estabilidade da plataforma</li>
+        </ul>
+
+        <h3>Comunicação</h3>
+        <ul class="item-list">
+          <li>Enviar notificações essenciais sobre seu plano, pagamentos e alterações de serviço</li>
+          <li>Responder a solicitações de suporte técnico</li>
+        </ul>
+
+        <div class="highlight-box highlight-box--green">
+          <p><strong>Não utilizamos</strong> seus dados ou os dados de leads da sua conta para fins de marketing próprio, venda a terceiros ou criação de perfis comportamentais.</p>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- 4. Armazenamento -->
+      <div class="policy-section" id="s4">
+        <div class="section-label">
+          <span class="section-label__num">4</span>
+          Armazenamento e segurança
+        </div>
+        <h2>Como Armazenamos e Protegemos seus Dados</h2>
+
+        <h3>Infraestrutura</h3>
+        <p>Todos os dados são armazenados em banco de dados <strong>PostgreSQL gerenciado pelo Supabase</strong>, hospedado em servidores com certificação de segurança. Os servidores estão localizados em região com conformidade a regulamentações de proteção de dados.</p>
+
+        <h3>Isolamento por conta (Row-Level Security)</h3>
+        <p>Implementamos <strong>Row-Level Security (RLS)</strong> em todas as tabelas que contêm dados de usuários. Isso significa que, a nível de banco de dados, cada usuário só pode acessar os seus próprios dados — mesmo que ocorra uma falha de autorização na camada da aplicação, o banco de dados bloqueia o acesso cruzado.</p>
+
+        <h3>Medidas de segurança aplicadas</h3>
+        <ul class="item-list">
+          <li>Comunicação criptografada em trânsito via <strong>TLS 1.2+</strong> em todas as conexões</li>
+          <li>Senhas armazenadas com <strong>hash bcrypt</strong> — nunca em texto puro</li>
+          <li>Tokens de sessão com tempo de expiração e rotação automática</li>
+          <li>Backups periódicos do banco de dados com criptografia</li>
+          <li>Acesso administrativo ao banco de dados restrito a pessoal autorizado com autenticação de dois fatores</li>
+          <li>Logs de auditoria de acesso administrativo</li>
+        </ul>
+
+        <div class="highlight-box highlight-box--orange">
+          <p><strong>Sessões WhatsApp:</strong> a conexão é estabelecida por meio de um token local de sessão. Não armazenamos o conteúdo das mensagens trocadas com os leads — apenas metadados de envio (data, status de entrega) necessários para o funcionamento das automações.</p>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- 5. Terceiros -->
+      <div class="policy-section" id="s5">
+        <div class="section-label">
+          <span class="section-label__num">5</span>
+          Terceiros
+        </div>
+        <h2>Compartilhamento com Terceiros</h2>
+        <p>Não vendemos, alugamos nem cedemos seus dados a terceiros para fins comerciais. O compartilhamento ocorre apenas nas seguintes situações e com as seguintes entidades de confiança:</p>
+
+        <h3>Provedores de infraestrutura</h3>
+        <ul class="item-list">
+          <li><strong>Supabase</strong> — banco de dados, autenticação e armazenamento de arquivos</li>
+          <li><strong>Google Maps Platform</strong> — fonte dos dados públicos de empresas extraídos pela plataforma</li>
+          <li><strong>Provedor de hospedagem</strong> — servidores onde a aplicação é executada</li>
+        </ul>
+
+        <h3>Obrigações legais</h3>
+        <p>Podemos divulgar dados quando exigido por lei, ordem judicial ou autoridade competente, sempre nos limites do que a legislação determina.</p>
+
+        <p>Todos os terceiros que acessam dados de usuários estão contratualmente obrigados a tratá-los com confidencialidade e a utilizá-los apenas para a finalidade contratada.</p>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- 6. Cookies -->
+      <div class="policy-section" id="s6">
+        <div class="section-label">
+          <span class="section-label__num">6</span>
+          Cookies
+        </div>
+        <h2>Cookies e Rastreamento</h2>
+        <p>A plataforma Alcetus Flow utiliza cookies e armazenamento local (<em>localStorage</em>) exclusivamente para fins funcionais:</p>
+        <ul class="item-list">
+          <li><strong>Cookie de sessão:</strong> mantém você autenticado entre navegações sem precisar fazer login novamente</li>
+          <li><strong>Preferências locais:</strong> tema (claro/escuro), configurações de layout e filtros salvos no CRM — armazenados no seu navegador, não em nossos servidores</li>
+        </ul>
+        <p>Não utilizamos cookies de rastreamento, pixels de marketing ou ferramentas de analytics de terceiros dentro da plataforma.</p>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- 7. LGPD -->
+      <div class="policy-section" id="s7">
+        <div class="section-label">
+          <span class="section-label__num">7</span>
+          Seus direitos (LGPD)
+        </div>
+        <h2>Seus Direitos sob a LGPD</h2>
+        <p>Como titular de dados pessoais, a Lei nº 13.709/2018 garante a você os seguintes direitos, que você pode exercer a qualquer momento:</p>
+
+        <ul class="item-list">
+          <li><strong>Acesso:</strong> solicitar uma cópia de todos os dados pessoais que temos sobre você</li>
+          <li><strong>Correção:</strong> corrigir dados incompletos, inexatos ou desatualizados</li>
+          <li><strong>Exclusão:</strong> solicitar a exclusão dos seus dados pessoais e de todos os leads da sua conta</li>
+          <li><strong>Portabilidade:</strong> exportar seus leads em formato Excel a qualquer momento diretamente pelo painel</li>
+          <li><strong>Revogação do consentimento:</strong> retirar o consentimento dado previamente, sem prejuízo ao tratamento realizado antes da revogação</li>
+          <li><strong>Oposição:</strong> se opor ao tratamento realizado com fundamento em legítimo interesse</li>
+          <li><strong>Informação sobre compartilhamento:</strong> saber com quais entidades seus dados foram compartilhados</li>
+        </ul>
+
+        <p>Para exercer qualquer um desses direitos, entre em contato conosco pelo canal de suporte informado na seção 10. Responderemos em até <strong>15 dias úteis</strong>.</p>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- 8. Retenção -->
+      <div class="policy-section" id="s8">
+        <div class="section-label">
+          <span class="section-label__num">8</span>
+          Retenção
+        </div>
+        <h2>Por Quanto Tempo Guardamos seus Dados</h2>
+
+        <h3>Conta ativa</h3>
+        <p>Enquanto sua conta estiver ativa, todos os seus dados são mantidos para garantir o pleno funcionamento do serviço.</p>
+
+        <h3>Após o cancelamento</h3>
+        <p>Após o cancelamento da conta ou encerramento do contrato, seus dados pessoais e os dados de leads serão <strong>excluídos permanentemente em até 30 dias</strong>, salvo obrigação legal que exija retenção por período superior.</p>
+
+        <h3>Logs técnicos</h3>
+        <p>Logs de acesso e diagnóstico são retidos por até <strong>90 dias</strong> para fins de segurança e resolução de incidentes, sendo excluídos automaticamente após esse período.</p>
+
+        <div class="highlight-box">
+          <p><strong>Exportação antes do cancelamento:</strong> recomendamos exportar sua base de leads em Excel antes de solicitar o cancelamento da conta, pois após a exclusão não é possível recuperar os dados.</p>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- 9. Alterações -->
+      <div class="policy-section" id="s9">
+        <div class="section-label">
+          <span class="section-label__num">9</span>
+          Alterações
+        </div>
+        <h2>Alterações nesta Política</h2>
+        <p>Esta Política de Privacidade pode ser atualizada periodicamente para refletir mudanças no serviço, na legislação ou nas práticas de tratamento de dados. Sempre que houver alterações relevantes:</p>
+        <ul class="item-list">
+          <li>Atualizaremos a data de "Última atualização" no topo desta página</li>
+          <li>Notificaremos os usuários ativos por e-mail com antecedência mínima de 7 dias para alterações substanciais</li>
+          <li>A versão anterior permanecerá acessível mediante solicitação</li>
+        </ul>
+        <p>O uso continuado da plataforma após a entrada em vigor das alterações representa a sua aceitação da nova versão.</p>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- 10. Contato -->
+      <div class="policy-section" id="s10">
+        <div class="section-label">
+          <span class="section-label__num">10</span>
+          Contato
+        </div>
+        <h2>Contato e Encarregado de Dados</h2>
+        <p>Para exercer seus direitos, tirar dúvidas sobre esta política ou reportar qualquer preocupação com o tratamento dos seus dados, entre em contato:</p>
+
+        <div class="contact-card">
+          <div class="contact-card__row">
+            <span class="contact-card__label">Empresa</span>
+            <span class="contact-card__value">Alcetus</span>
+          </div>
+          <div class="contact-card__row">
+            <span class="contact-card__label">E-mail</span>
+            <span class="contact-card__value"><a href="mailto:privacidade@alcetus.com">privacidade@alcetus.com</a></span>
+          </div>
+          <div class="contact-card__row">
+            <span class="contact-card__label">Suporte</span>
+            <span class="contact-card__value"><a href="mailto:suporte@alcetus.com">suporte@alcetus.com</a></span>
+          </div>
+        </div>
+
+        <p style="margin-top:16px">Você também tem o direito de apresentar reclamação à <strong>Autoridade Nacional de Proteção de Dados (ANPD)</strong> caso considere que o tratamento dos seus dados viola a LGPD.</p>
+      </div>
+
+    </div><!-- /prose -->
+  </div><!-- /container -->
+</div><!-- /content -->
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__inner">
+      <div class="footer__logo">
+        <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
+          <rect width="32" height="32" rx="8" fill="url(#logo-grad-ft)"/>
+          <path d="M10 22V10l6 4.5L22 10v12l-6-4.5L10 22z" fill="#fff" fill-opacity=".9"/>
+          <defs><linearGradient id="logo-grad-ft" x1="0" y1="0" x2="32" y2="32"><stop stop-color="#3b82f6"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs>
+        </svg>
+        Alcetus Flow
+      </div>
+      <div class="footer__links">
+        <a href="./index.html">Início</a>
+        <a href="./index.html#planos">Planos</a>
+        <a href="./index.html#faq">FAQ</a>
+        <a href="./politica-de-privacidade.html" style="color:var(--c-blue)">Política de Privacidade</a>
+      </div>
+    </div>
+    <div class="footer__copy">
+      &copy; 2026 Alcetus Flow. Todos os direitos reservados.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
