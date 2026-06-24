@@ -5,44 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Obrigado pela sua compra — FlowReports</title>
 
-  <!-- ===== Gate de acesso pós-compra (token secreto Kiwify) =====
-       Só o HASH do token fica aqui; o token real só existe na URL de
-       redirect configurada na Kiwify. Sem token válido -> redireciona. -->
-  <style id="__fr_gate">html{visibility:hidden}</style>
-  <script>
-  (function () {
-    var EXPECTED = "db377ab3ee6f457f43b061d6f2bf2c8411f935edb4ef8d925ddc19fe30cf5c98"; // SHA-256(token)
-    var FALLBACK = "/flowreports/"; // destino de quem chega sem comprar
-    var FLAG = "fr_obrigado_ok";
-
-    function reveal() {
-      var s = document.getElementById("__fr_gate");
-      if (s && s.parentNode) s.parentNode.removeChild(s);
-      try { document.documentElement.style.visibility = "visible"; } catch (e) {}
-    }
-    function deny() { try { location.replace(FALLBACK); } catch (e) { location.href = FALLBACK; } }
-
-    // Já liberado nesta aba (refresh / navegação interna)?
-    try { if (sessionStorage.getItem(FLAG) === "1") { reveal(); return; } } catch (e) {}
-
-    var m = /[?&#]k=([^&#]+)/.exec(location.search + location.hash);
-    var tok = m ? decodeURIComponent(m[1]) : "";
-    if (!tok) { deny(); return; }
-
-    if (!(window.crypto && crypto.subtle)) { deny(); return; } // exige contexto seguro (https)
-
-    crypto.subtle.digest("SHA-256", new TextEncoder().encode(tok)).then(function (buf) {
-      var hex = Array.prototype.map.call(new Uint8Array(buf), function (b) {
-        return ("0" + b.toString(16)).slice(-2);
-      }).join("");
-      if (hex !== EXPECTED) { deny(); return; }
-      try { sessionStorage.setItem(FLAG, "1"); } catch (e) {}
-      try { history.replaceState(null, "", location.pathname); } catch (e) {} // remove ?k= da URL
-      reveal();
-    }).catch(deny);
-  })();
-  </script>
-  <!-- ===== fim do gate ===== -->
   <style>
     /* Sem splash de carregamento: esconde o logo "Unpacking" do bundler */
     #__bundler_thumbnail, #__bundler_loading { display: none !important; }
