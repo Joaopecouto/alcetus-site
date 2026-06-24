@@ -44,6 +44,8 @@
   </script>
   <!-- ===== fim do gate ===== -->
   <style>
+    /* Sem splash de carregamento: esconde o logo "Unpacking" do bundler */
+    #__bundler_thumbnail, #__bundler_loading { display: none !important; }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { background: #0b0f0d; display: flex; align-items: center; justify-content: center; min-height: 100vh; font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
     #__bundler_loading { position: fixed; bottom: 20px; right: 20px; font: 13px/1.4 -apple-system, BlinkMacSystemFont, sans-serif; color: #666; background: #fff; padding: 8px 14px; border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,0.12); z-index: 10000; }
