@@ -1,18 +1,133 @@
-<p align="center"><img src="https://raw.githubusercontent.com/Joaopecouto/Joaopecouto/main/assets/projects/v3/alcetus.png" width="96" alt="Ícone do projeto"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/Joaopecouto/Joaopecouto/main/assets/projects/v4/alcetus.png" width="96" alt="Ícone do projeto"></p>
 
-<h1 align="center">Alcetus</h1>
+<h1 align="center">Alcetus Flow</h1>
 
-<p align="center">Site institucional e identidade da marca Alcetus.<br><sub><i>Alcetus brand website.</i></sub></p>
+<p align="center">Landing page do Alcetus Flow, plataforma de prospecção B2B da marca Alcetus.<br><sub><i>Landing page for Alcetus Flow, the Alcetus B2B prospecting platform.</i></sub></p>
 
 <p align="center">
   <kbd><img src="https://raw.githubusercontent.com/Joaopecouto/Joaopecouto/main/assets/icons/v2/html5.svg" height="18" align="absmiddle" alt=""> HTML5</kbd> <kbd><img src="https://raw.githubusercontent.com/Joaopecouto/Joaopecouto/main/assets/icons/v2/css.svg" height="18" align="absmiddle" alt=""> CSS</kbd> <kbd><img src="https://raw.githubusercontent.com/Joaopecouto/Joaopecouto/main/assets/icons/v2/javascript.svg" height="18" align="absmiddle" alt=""> JavaScript</kbd> <kbd><img src="https://raw.githubusercontent.com/Joaopecouto/Joaopecouto/main/assets/icons/v2/docker.svg" height="18" align="absmiddle" alt=""> Docker</kbd>
 </p>
 
-Site: [alcetus.com](https://alcetus.com)
+<p align="center"><a href="#portugu%C3%AAs"><b>Português</b></a> &nbsp;|&nbsp; <a href="#english"><b>English</b></a></p>
+
+> **PT** Site: [alcetus.com](https://alcetus.com).
+> **EN** Site: [alcetus.com](https://alcetus.com).
 
 ## Português
 
-Site estático (HTML, CSS e JavaScript puro) da marca Alcetus, containerizado com Docker para deploy.
+<table>
+<tr>
+<td align="center" width="50%"><b>HTML · CSS · JS</b><br><sub>sem framework</sub></td><td align="center" width="50%"><b>Docker</b><br><sub>pronto para deploy</sub></td>
+</tr>
+</table>
+
+### Visão geral
+
+O repositório alcetus-site guarda uma página de apresentação feita em HTML, CSS e JavaScript puros, sem framework e sem etapa de build. O conteúdo atual apresenta o Alcetus Flow, uma plataforma de prospecção B2B que reúne extrator de leads, CRM de vendas e disparador de WhatsApp em um único painel.
+
+A página é uma landing de uma rota só, com menu fixo, vários blocos de conteúdo, um formulário de demonstração em janela modal e uma ferramenta que classifica o segmento digitado. O site vai para produção em um container Nginx. Dentro do mesmo repositório há também a landing do FlowReports e uma página de política de privacidade.
+
+### Como funciona
+
+1. A visitante abre a página e vê o título, o subtítulo e o botão para agendar uma demonstração, ao lado de uma maquete do painel.
+2. Ao rolar, os blocos aparecem com uma animação suave, e o menu muda de estilo.
+3. Ela pode digitar o segmento do negócio e descobrir se ele parece B2B, com uma contagem estimada de empresas.
+4. Qualquer botão de demonstração abre uma janela com formulário, com a máscara de telefone brasileiro aplicada.
+5. O envio vai para um webhook do n8n, quando configurado, ou para o serviço FormSubmit como alternativa.
+6. Se o envio falhar, a página oferece abrir o e-mail da visitante com a mensagem pronta.
+
+```mermaid
+flowchart LR
+  A[Visitante] --> B[Hero]
+  B --> C[Problemas]
+  C --> D[Solucao em 3 ferramentas]
+  D --> E[Comparacao]
+  E --> F[Precos]
+  F --> G[Para quem]
+  G --> H[FAQ]
+  H --> I[Chamada final]
+  B --> M[Janela de demonstracao]
+  G --> N[Busca de segmento]
+  N --> M
+  M --> W[Webhook ou FormSubmit]
+```
+
+### Funcionalidades em detalhe
+
+#### Estrutura e seções
+
+A página tem um menu com os links Solução, Comparação, Preços, Para quem e FAQ, mais o botão de demonstração. O menu vira um painel no celular. As seções seguem uma ordem de venda.
+
+- Hero com o título principal, o subtítulo, o botão e uma maquete do painel.
+- Problemas da prospecção manual, em quatro cartões.
+- Solução, com as três ferramentas e o fluxo de cada uma (extrai, gerencia, converte).
+- Comparação entre trabalhar sem e com o produto.
+- Preços, com o custo das ferramentas separadas contra o plano único.
+- Para quem é, com os perfis atendidos e a busca por segmento.
+- Depoimentos.
+- Perguntas frequentes e chamada final, seguidas do rodapé.
+
+#### Busca por segmento
+
+Um campo recebe o segmento do negócio e responde se ele é B2B, B2C ou inválido.
+
+- Com um webhook configurado, a classificação é feita por IA no n8n e a resposta é normalizada (a contagem fica entre 20 e 130).
+- Sem webhook, ou se ele falhar, a classificação cai para uma regra local. Ela rejeita texto sem cara de negócio, como poucas letras, só números ou consoantes demais, e trata o resto como B2B.
+- O segmento digitado é escapado antes de ir para o HTML, e o botão do resultado abre a janela já com o segmento preenchido.
+
+#### Formulário de demonstração
+
+O formulário coleta nome, e-mail, WhatsApp, empresa, segmento e mensagem.
+
+- A janela modal move o foco para o primeiro campo, fecha com Esc ou pelos botões de fechar e bloqueia a rolagem da página.
+- O telefone recebe máscara brasileira com 10 ou 11 dígitos.
+- Há estado de carregamento no botão, que impede envio duplo.
+- A tela de sucesso substitui o formulário depois do envio.
+
+#### FAQ e animações
+
+O FAQ é um acordeão que mantém um item aberto por vez e atualiza o atributo aria-expanded. As animações de entrada usam IntersectionObserver para revelar cada bloco quando ele aparece na tela. Os rolamentos internos são suaves.
+
+### Arquitetura e stack
+
+São três arquivos principais, `index.html`, `styles.css` e `script.js`, mais a política de privacidade e a pasta flowreports. O servidor é um Nginx.
+
+```mermaid
+flowchart TB
+  B[Navegador] --> N[Nginx no container]
+  N --> H[index.html]
+  N --> C[styles.css]
+  N --> J[script.js]
+  N --> P[Politica de privacidade]
+  N --> FR[flowreports]
+  J -->|opcional| WH[Webhook n8n]
+  J -->|alternativa| FS[FormSubmit]
+```
+
+- Estilo: tokens em HSL no `:root` (fundo escuro, primária azul-violeta, raio de 0,75 rem), utilitários de vidro e de texto em gradiente, e animações em CSS.
+- Responsividade: faixas de largura em 768, 881, 1025, 1201 e 1367 px, com contêiner de até 1280 px.
+- Fonte: Inter, carregada pelo Google Fonts.
+- SEO: título, descrição e metatags Open Graph.
+- Peso: cerca de 58 KB de HTML, 28 KB de CSS e 13 KB de JavaScript, sem imagens de conteúdo (os ícones são SVG no próprio HTML).
+
+### Deploy
+
+O Dockerfile parte de `nginx:alpine`, copia a configuração, os arquivos da página, a política de privacidade e a pasta flowreports para o diretório público e expõe a porta 80. O `nginx.conf` usa `try_files` para entregar URLs sem extensão `.html`, esconde a versão do servidor e define a página de erro 404. Localmente, basta abrir o `index.html` ou rodar `docker build` e `docker run`.
+
+### Decisões de engenharia
+
+- **HTML, CSS e JS puros.** Sem framework nem build, a página carrega rápido e qualquer pessoa edita abrindo o arquivo.
+- **Tokens de design no `:root`.** Cores, raio e bordas ficam em variáveis, então mudar o visual é editar um bloco.
+- **Formulário com duas saídas e uma rede de segurança.** O webhook é a rota principal, o FormSubmit é a alternativa, e o e-mail pré-preenchido cobre a falha dos dois.
+- **Classificador com fallback local.** A busca por segmento funciona mesmo sem a IA no ar.
+- **Container Nginx mínimo.** A imagem final contém só os arquivos estáticos e uma configuração curta.
+
+### Limites conhecidos
+
+- O Dockerfile não copia um arquivo `404.html`, e o Nginx está configurado para servi-lo, então a página de erro depende de esse arquivo existir.
+- Na regra local da busca por segmento, a quantidade de empresas mostrada é sorteada entre 20 e 130 e não vem de uma base real.
+- O site carrega o Inter por link do Google Fonts, e não por arquivo próprio.
+- O código tem um espaço para a URL de cada webhook, e enquanto ele está vazio o envio usa o FormSubmit, que exige uma ativação no primeiro uso.
 
 ### Como rodar
 
@@ -25,7 +140,120 @@ docker run -p 8080:80 alcetus-site
 
 ## English
 
-Static website (vanilla HTML, CSS and JavaScript) for the Alcetus brand, containerized with Docker for deployment.
+<table>
+<tr>
+<td align="center" width="50%"><b>HTML · CSS · JS</b><br><sub>no framework</sub></td><td align="center" width="50%"><b>Docker</b><br><sub>deploy ready</sub></td>
+</tr>
+</table>
+
+### Overview
+
+The alcetus-site repository holds a presentation page built in plain HTML, CSS and JavaScript, with no framework and no build step. The current content presents Alcetus Flow, a B2B prospecting platform that brings a lead extractor, a sales CRM and a WhatsApp sender into a single panel.
+
+The page is a one-route landing with a fixed menu, several content blocks, a demo form in a modal window and a tool that classifies the segment a visitor types. The site goes to production in an Nginx container. The same repository also holds the FlowReports landing and a privacy policy page.
+
+### How it works
+
+1. The visitor opens the page and sees the title, the subtitle and a button to book a demo, next to a mockup of the panel.
+2. As they scroll, blocks appear with a soft animation, and the menu changes style.
+3. They can type their business segment and find out whether it looks B2B, with an estimated company count.
+4. Any demo button opens a window with a form, with a Brazilian phone mask applied.
+5. Submission goes to an n8n webhook, when configured, or to the FormSubmit service as a fallback.
+6. If sending fails, the page offers to open the visitor's email client with the message ready.
+
+```mermaid
+flowchart LR
+  A[Visitor] --> B[Hero]
+  B --> C[Problems]
+  C --> D[Solution in 3 tools]
+  D --> E[Comparison]
+  E --> F[Pricing]
+  F --> G[Who it is for]
+  G --> H[FAQ]
+  H --> I[Final call]
+  B --> M[Demo window]
+  G --> N[Segment search]
+  N --> M
+  M --> W[Webhook or FormSubmit]
+```
+
+### Features in detail
+
+#### Structure and sections
+
+The page has a menu with the links Solution, Comparison, Pricing, Who it is for and FAQ, plus the demo button. The menu becomes a panel on mobile. Sections follow a sales order.
+
+- Hero with the main title, subtitle, button and a mockup of the panel.
+- Problems of manual prospecting, in four cards.
+- Solution, with the three tools and each one's flow (extract, manage, convert).
+- Comparison between working without and with the product.
+- Pricing, with the cost of the separate tools against the single plan.
+- Who it is for, with the profiles served and the segment search.
+- Testimonials.
+- Frequently asked questions and a final call, followed by the footer.
+
+#### Segment search
+
+A field takes the business segment and answers whether it is B2B, B2C or invalid.
+
+- With a webhook configured, classification is done by AI in n8n and the response is normalized (the count stays between 20 and 130).
+- Without a webhook, or if it fails, classification falls back to a local rule. It rejects text that does not look like a business, such as very few letters, only digits or too many consonants, and treats everything else as B2B.
+- The typed segment is escaped before going into the HTML, and the result button opens the modal with the segment prefilled.
+
+#### Demo form
+
+The form collects name, email, WhatsApp, company, segment and message.
+
+- The modal moves focus to the first field, closes on Esc or with the close buttons, and locks page scrolling.
+- The phone gets a Brazilian mask with 10 or 11 digits.
+- The button has a loading state that prevents double submission.
+- A success screen replaces the form after sending.
+
+#### FAQ and animations
+
+The FAQ is an accordion that keeps one item open at a time and updates the aria-expanded attribute. Entrance animations use IntersectionObserver to reveal each block when it reaches the screen. Internal scrolling is smooth.
+
+### Architecture and stack
+
+There are three main files, `index.html`, `styles.css` and `script.js`, plus the privacy policy and the flowreports folder. The server is Nginx.
+
+```mermaid
+flowchart TB
+  B[Browser] --> N[Nginx in container]
+  N --> H[index.html]
+  N --> C[styles.css]
+  N --> J[script.js]
+  N --> P[Privacy policy]
+  N --> FR[flowreports]
+  J -->|optional| WH[n8n webhook]
+  J -->|fallback| FS[FormSubmit]
+```
+
+- Styling: HSL tokens in `:root` (dark background, blue-violet primary, 0.75 rem radius), glass and gradient-text utilities, and CSS animations.
+- Responsiveness: width breakpoints at 768, 881, 1025, 1201 and 1367 px, with a container of up to 1280 px.
+- Font: Inter, loaded through Google Fonts.
+- SEO: title, description and Open Graph meta tags.
+- Weight: about 58 KB of HTML, 28 KB of CSS and 13 KB of JavaScript, with no content images (icons are SVG inside the HTML).
+
+### Deploy
+
+The Dockerfile starts from `nginx:alpine`, copies the configuration, the page files, the privacy policy and the flowreports folder into the public directory, and exposes port 80. The `nginx.conf` uses `try_files` to serve URLs without the `.html` extension, hides the server version and sets the 404 error page. Locally, you can just open `index.html` or run `docker build` and `docker run`.
+
+### Engineering decisions
+
+- **Plain HTML, CSS and JS.** With no framework or build, the page loads fast and anyone can edit it by opening the file.
+- **Design tokens in `:root`.** Colors, radius and borders live in variables, so changing the look means editing one block.
+- **A form with two outputs and a safety net.** The webhook is the main route, FormSubmit is the fallback, and the prefilled email covers the failure of both.
+- **Classifier with a local fallback.** The segment search works even when the AI is down.
+- **Minimal Nginx container.** The final image holds only static files and a short configuration.
+
+### Known limits
+
+- The Dockerfile does not copy a `404.html` file, and Nginx is set to serve it, so the error page depends on that file existing.
+- In the local segment-search rule, the company count shown is drawn at random between 20 and 130 and does not come from a real database.
+- The site loads Inter through a Google Fonts link, not from a self-hosted file.
+- The code has a slot for each webhook URL, and while it is empty submission uses FormSubmit, which requires an activation on first use.
+- The testimonials and the price figures are written directly in the HTML.
 
 ### Getting started
 
