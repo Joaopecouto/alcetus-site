@@ -58,6 +58,16 @@ flowchart LR
 
 A página tem um menu com os links Solução, Comparação, Preços, Para quem e FAQ, mais o botão de demonstração. O menu vira um painel no celular. As seções seguem uma ordem de venda.
 
+<p align="center"><img src="./assets/screens/mobile-hero.png" alt="Hero na versão mobile (390 px)." width="92%"><br><sub>Hero na versão mobile (390 px).</sub></p>
+
+<p align="center"><img src="./assets/screens/precos.png" alt="Preços: ferramentas separadas contra o plano único." width="92%"><br><sub>Preços: ferramentas separadas contra o plano único.</sub></p>
+
+<p align="center"><img src="./assets/screens/comparacao.png" alt="Comparação entre trabalhar sem e com o produto." width="92%"><br><sub>Comparação entre trabalhar sem e com o produto.</sub></p>
+
+<p align="center"><img src="./assets/screens/solucao.png" alt="Solução: as três ferramentas e o fluxo de cada uma." width="92%"><br><sub>Solução: as três ferramentas e o fluxo de cada uma.</sub></p>
+
+<p align="center"><img src="./assets/screens/hero.png" alt="Hero com título, subtítulo, botão de demonstração e maquete do painel." width="92%"><br><sub>Hero com título, subtítulo, botão de demonstração e maquete do painel.</sub></p>
+
 - Hero com o título principal, o subtítulo, o botão e uma maquete do painel.
 - Problemas da prospecção manual, em quatro cartões.
 - Solução, com as três ferramentas e o fluxo de cada uma (extrai, gerencia, converte).
@@ -71,6 +81,8 @@ A página tem um menu com os links Solução, Comparação, Preços, Para quem e
 
 Um campo recebe o segmento do negócio e responde se ele é B2B, B2C ou inválido.
 
+<p align="center"><img src="./assets/screens/para-quem.png" alt="Perfis atendidos e campo de busca por segmento de negócio." width="92%"><br><sub>Perfis atendidos e campo de busca por segmento de negócio.</sub></p>
+
 - Com um webhook configurado, a classificação é feita por IA no n8n e a resposta é normalizada (a contagem fica entre 20 e 130).
 - Sem webhook, ou se ele falhar, a classificação cai para uma regra local. Ela rejeita texto sem cara de negócio, como poucas letras, só números ou consoantes demais, e trata o resto como B2B.
 - O segmento digitado é escapado antes de ir para o HTML, e o botão do resultado abre a janela já com o segmento preenchido.
@@ -78,6 +90,8 @@ Um campo recebe o segmento do negócio e responde se ele é B2B, B2C ou inválid
 #### Formulário de demonstração
 
 O formulário coleta nome, e-mail, WhatsApp, empresa, segmento e mensagem.
+
+<p align="center"><img src="./assets/screens/modal-demo.png" alt="Janela modal com o formulário de demonstração." width="92%"><br><sub>Janela modal com o formulário de demonstração.</sub></p>
 
 - A janela modal move o foco para o primeiro campo, fecha com Esc ou pelos botões de fechar e bloqueia a rolagem da página.
 - O telefone recebe máscara brasileira com 10 ou 11 dígitos.
@@ -87,6 +101,8 @@ O formulário coleta nome, e-mail, WhatsApp, empresa, segmento e mensagem.
 #### FAQ e animações
 
 O FAQ é um acordeão que mantém um item aberto por vez e atualiza o atributo aria-expanded. As animações de entrada usam IntersectionObserver para revelar cada bloco quando ele aparece na tela. Os rolamentos internos são suaves.
+
+<p align="center"><img src="./assets/screens/faq-aberto.png" alt="FAQ em acordeão, com um item aberto." width="92%"><br><sub>FAQ em acordeão, com um item aberto.</sub></p>
 
 ### Arquitetura e stack
 
@@ -183,6 +199,16 @@ flowchart LR
 
 The page has a menu with the links Solution, Comparison, Pricing, Who it is for and FAQ, plus the demo button. The menu becomes a panel on mobile. Sections follow a sales order.
 
+<p align="center"><img src="./assets/screens/mobile-hero.png" alt="Hero on mobile (390 px)." width="92%"><br><sub>Hero on mobile (390 px).</sub></p>
+
+<p align="center"><img src="./assets/screens/precos.png" alt="Pricing: separate tools versus the single plan." width="92%"><br><sub>Pricing: separate tools versus the single plan.</sub></p>
+
+<p align="center"><img src="./assets/screens/comparacao.png" alt="Comparison between working without and with the product." width="92%"><br><sub>Comparison between working without and with the product.</sub></p>
+
+<p align="center"><img src="./assets/screens/solucao.png" alt="Solution: the three tools and each one's flow." width="92%"><br><sub>Solution: the three tools and each one's flow.</sub></p>
+
+<p align="center"><img src="./assets/screens/hero.png" alt="Hero with headline, subtitle, demo button and dashboard mockup." width="92%"><br><sub>Hero with headline, subtitle, demo button and dashboard mockup.</sub></p>
+
 - Hero with the main title, subtitle, button and a mockup of the panel.
 - Problems of manual prospecting, in four cards.
 - Solution, with the three tools and each one's flow (extract, manage, convert).
@@ -196,6 +222,8 @@ The page has a menu with the links Solution, Comparison, Pricing, Who it is for 
 
 A field takes the business segment and answers whether it is B2B, B2C or invalid.
 
+<p align="center"><img src="./assets/screens/para-quem.png" alt="Target profiles and the business segment search field." width="92%"><br><sub>Target profiles and the business segment search field.</sub></p>
+
 - With a webhook configured, classification is done by AI in n8n and the response is normalized (the count stays between 20 and 130).
 - Without a webhook, or if it fails, classification falls back to a local rule. It rejects text that does not look like a business, such as very few letters, only digits or too many consonants, and treats everything else as B2B.
 - The typed segment is escaped before going into the HTML, and the result button opens the modal with the segment prefilled.
@@ -203,6 +231,8 @@ A field takes the business segment and answers whether it is B2B, B2C or invalid
 #### Demo form
 
 The form collects name, email, WhatsApp, company, segment and message.
+
+<p align="center"><img src="./assets/screens/modal-demo.png" alt="Modal window with the demo request form." width="92%"><br><sub>Modal window with the demo request form.</sub></p>
 
 - The modal moves focus to the first field, closes on Esc or with the close buttons, and locks page scrolling.
 - The phone gets a Brazilian mask with 10 or 11 digits.
@@ -212,6 +242,8 @@ The form collects name, email, WhatsApp, company, segment and message.
 #### FAQ and animations
 
 The FAQ is an accordion that keeps one item open at a time and updates the aria-expanded attribute. Entrance animations use IntersectionObserver to reveal each block when it reaches the screen. Internal scrolling is smooth.
+
+<p align="center"><img src="./assets/screens/faq-aberto.png" alt="Accordion FAQ with one item open." width="92%"><br><sub>Accordion FAQ with one item open.</sub></p>
 
 ### Architecture and stack
 
