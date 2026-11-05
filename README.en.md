@@ -65,14 +65,14 @@ The page has a menu with the links Solution, Comparison, Pricing, Who it is for 
 
 <p align="center"><img src="./assets/screens/hero.png" alt="Hero with headline, subtitle, demo button and dashboard mockup." width="92%"><br><sub>Hero with headline, subtitle, demo button and dashboard mockup.</sub></p>
 
-- Hero with the main title, subtitle, button and a mockup of the panel.
-- Problems of manual prospecting, in four cards.
-- Solution, with the three tools and each one's flow (extract, manage, convert).
-- Comparison between working without and with the product.
-- Pricing, with the cost of the separate tools against the single plan.
-- Who it is for, with the profiles served and the segment search.
-- Testimonials.
-- Frequently asked questions and a final call, followed by the footer.
+- The hero has the main title, the subtitle, the button and a mockup of the panel.
+- The problems section shows manual prospecting in four cards.
+- The solution presents the three tools and each one's flow (extract, manage, convert).
+- The comparison puts working without the product next to working with it.
+- The pricing shows the cost of the separate tools against the single plan.
+- The "Who it is for" section has the profiles served and the segment search.
+- The testimonials come next.
+- Last come the frequently asked questions and the final call, followed by the footer.
 
 #### Segment search
 
@@ -117,11 +117,11 @@ flowchart TB
   J -->|fallback| FS[FormSubmit]
 ```
 
-- Styling: HSL tokens in `:root` (dark background, blue-violet primary, 0.75 rem radius), glass and gradient-text utilities, and CSS animations.
-- Responsiveness: width breakpoints at 768, 881, 1025, 1201 and 1367 px, with a container of up to 1280 px.
-- Font: Inter, loaded through Google Fonts.
-- SEO: title, description and Open Graph meta tags.
-- Weight: about 58 KB of HTML, 28 KB of CSS and 13 KB of JavaScript, with no content images (icons are SVG inside the HTML).
+- The styling uses HSL tokens in `:root` (dark background, blue-violet primary, 0.75 rem radius), glass and gradient-text utilities, and CSS animations.
+- The layout has width breakpoints at 768, 881, 1025, 1201 and 1367 px, with a container of up to 1280 px.
+- The font is Inter, loaded through Google Fonts.
+- For SEO, the page has a title, a description and Open Graph meta tags.
+- The page weighs about 58 KB of HTML, 28 KB of CSS and 13 KB of JavaScript, with no content images (icons are SVG inside the HTML).
 
 ### Deploy
 

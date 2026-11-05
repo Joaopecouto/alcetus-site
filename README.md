@@ -53,7 +53,7 @@ flowchart LR
 
 #### Estrutura e seções
 
-A página tem um menu com os links Solução, Comparação, Preços, Para quem e FAQ, mais o botão de demonstração. O menu vira um painel no celular. As seções seguem uma ordem de venda.
+A página tem um menu com os links Solução, Comparação, Preços, Para quem e FAQ, mais o botão de demonstração. No celular, o menu vira um painel. As seções seguem uma ordem de venda.
 
 <p align="center"><img src="./assets/screens/mobile-hero.png" alt="Hero na versão mobile (390 px)." width="92%"><br><sub>Hero na versão mobile (390 px).</sub></p>
 
@@ -65,14 +65,14 @@ A página tem um menu com os links Solução, Comparação, Preços, Para quem e
 
 <p align="center"><img src="./assets/screens/hero.png" alt="Hero com título, subtítulo, botão de demonstração e maquete do painel." width="92%"><br><sub>Hero com título, subtítulo, botão de demonstração e maquete do painel.</sub></p>
 
-- Hero com o título principal, o subtítulo, o botão e uma maquete do painel.
-- Problemas da prospecção manual, em quatro cartões.
-- Solução, com as três ferramentas e o fluxo de cada uma (extrai, gerencia, converte).
-- Comparação entre trabalhar sem e com o produto.
-- Preços, com o custo das ferramentas separadas contra o plano único.
-- Para quem é, com os perfis atendidos e a busca por segmento.
-- Depoimentos.
-- Perguntas frequentes e chamada final, seguidas do rodapé.
+- O hero traz o título principal, o subtítulo, o botão e uma maquete do painel.
+- A seção de problemas mostra a prospecção manual em quatro cartões.
+- A solução apresenta as três ferramentas e o fluxo de cada uma (extrai, gerencia, converte).
+- A comparação coloca lado a lado o trabalho sem o produto e com ele.
+- Os preços mostram o custo das ferramentas separadas contra o plano único.
+- A seção "Para quem é" traz os perfis atendidos e a busca por segmento.
+- Os depoimentos vêm em seguida.
+- Por fim ficam as perguntas frequentes e a chamada final, seguidas do rodapé.
 
 #### Busca por segmento
 
@@ -92,12 +92,12 @@ O formulário coleta nome, e-mail, WhatsApp, empresa, segmento e mensagem.
 
 - A janela modal move o foco para o primeiro campo, fecha com Esc ou pelos botões de fechar e bloqueia a rolagem da página.
 - O telefone recebe máscara brasileira com 10 ou 11 dígitos.
-- Há estado de carregamento no botão, que impede envio duplo.
-- A tela de sucesso substitui o formulário depois do envio.
+- O botão tem um estado de carregamento, que impede o envio duplo.
+- Depois do envio, uma tela de sucesso substitui o formulário.
 
 #### FAQ e animações
 
-O FAQ é um acordeão que mantém um item aberto por vez e atualiza o atributo aria-expanded. As animações de entrada usam IntersectionObserver para revelar cada bloco quando ele aparece na tela. Os rolamentos internos são suaves.
+O FAQ é um acordeão que mantém um item aberto por vez e atualiza o atributo aria-expanded. As animações de entrada usam IntersectionObserver para revelar cada bloco quando ele aparece na tela. Os rolamentos internos também são suaves.
 
 <p align="center"><img src="./assets/screens/faq-aberto.png" alt="FAQ em acordeão, com um item aberto." width="92%"><br><sub>FAQ em acordeão, com um item aberto.</sub></p>
 
@@ -117,11 +117,11 @@ flowchart TB
   J -->|alternativa| FS[FormSubmit]
 ```
 
-- Estilo: tokens em HSL no `:root` (fundo escuro, primária azul-violeta, raio de 0,75 rem), utilitários de vidro e de texto em gradiente, e animações em CSS.
-- Responsividade: faixas de largura em 768, 881, 1025, 1201 e 1367 px, com contêiner de até 1280 px.
-- Fonte: Inter, carregada pelo Google Fonts.
-- SEO: título, descrição e metatags Open Graph.
-- Peso: cerca de 58 KB de HTML, 28 KB de CSS e 13 KB de JavaScript, sem imagens de conteúdo (os ícones são SVG no próprio HTML).
+- O estilo usa tokens em HSL no `:root` (fundo escuro, primária azul-violeta, raio de 0,75 rem), utilitários de vidro e de texto em gradiente, e animações em CSS.
+- A responsividade usa faixas de largura em 768, 881, 1025, 1201 e 1367 px, com contêiner de até 1280 px.
+- A fonte é o Inter, carregado pelo Google Fonts.
+- Para SEO, a página tem título, descrição e metatags Open Graph.
+- O peso é de cerca de 58 KB de HTML, 28 KB de CSS e 13 KB de JavaScript, sem imagens de conteúdo (os ícones são SVG no próprio HTML).
 
 ### Deploy
 
