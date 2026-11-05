@@ -20,7 +20,7 @@
 
 ### Overview
 
-The alcetus-site repository holds a presentation page built in plain HTML, CSS and JavaScript, with no framework and no build step. The current content presents Alcetus Flow, a B2B prospecting platform that brings a lead extractor, a sales CRM and a WhatsApp sender into a single panel.
+The alcetus-site repository holds a presentation page built in plain HTML, CSS and JavaScript, with no framework and no build step at all. The current content presents Alcetus Flow, a B2B prospecting platform that brings together a lead extractor, a sales CRM and a WhatsApp sender in a single panel.
 
 The page is a one-route landing with a fixed menu, several content blocks, a demo form in a modal window and a tool that classifies the segment a visitor types. The site goes to production in an Nginx container. The same repository also holds the FlowReports landing and a privacy policy page.
 
