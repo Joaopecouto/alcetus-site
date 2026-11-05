@@ -3,7 +3,7 @@
 <p align="center">Site institucional e identidade da marca Alcetus.<br><sub><i>Alcetus brand website.</i></sub></p>
 
 <p align="center">
-  <kbd><img src="https://raw.githubusercontent.com/Joaopecouto/Joaopecouto/main/assets/icons/html5.svg" height="15" alt=""> HTML5</kbd> <kbd>CSS</kbd> <kbd><img src="https://raw.githubusercontent.com/Joaopecouto/Joaopecouto/main/assets/icons/javascript.svg" height="15" alt=""> JavaScript</kbd> <kbd><img src="https://raw.githubusercontent.com/Joaopecouto/Joaopecouto/main/assets/icons/docker.svg" height="15" alt=""> Docker</kbd>
+  <kbd><img src="https://raw.githubusercontent.com/Joaopecouto/Joaopecouto/main/assets/icons/html5.svg" height="18" alt=""> HTML5</kbd> <kbd><img src="https://raw.githubusercontent.com/Joaopecouto/Joaopecouto/main/assets/icons/css.svg" height="18" alt=""> CSS</kbd> <kbd><img src="https://raw.githubusercontent.com/Joaopecouto/Joaopecouto/main/assets/icons/javascript.svg" height="18" alt=""> JavaScript</kbd> <kbd><img src="https://raw.githubusercontent.com/Joaopecouto/Joaopecouto/main/assets/icons/docker.svg" height="18" alt=""> Docker</kbd>
 </p>
 
 Site: [alcetus.com](https://alcetus.com)
